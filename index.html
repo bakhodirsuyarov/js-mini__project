@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=BIZ+UDMincho&family=BIZ+UDPMincho&family=Inter&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/style.css">
+  <title>Document</title>
+</head>
+<body>
+
+  <header class="header">
+    <div class="product-top">
+      <div class="product-logo">
+        <img class="product-logo__img" src="./img/Home 1 (1).svg" alt="Home-icon" width="30" height="30">
+        <h2 class="product-logo__title">MAHSULOTLAR</h2>
+      </div>
+      <button class="product-card__btn">
+        <img class="product-card__img" src="./img/Buy 1 (1).svg" alt="card-icon" width="30" height="30">
+        <h2 class="product-card__title">SAVATCHA</h2>
+      </button>
+    </div>
+
+    <div class="product-sort">
+      <div class="product-sort__category">
+        <select class="product-sort__select" name="watches">
+          <option value="">Kategoriya</option>
+          <option value="filipp">Patek Filipp</option>
+          <option value="rolex">Rolex</option>
+          <option value="breguet">Breguet</option>
+          <option value="omega">Omega</option>
+          <option value="chopard">Chopard</option>
+        </select>
+      </div>
+      <div class="product-sort__min">
+        <input class="product-sort__min-input sort-input" name="min" type="number">
+        <label class="product-sort__min-label sort-label" for="min">-dan</label>
+      </div>
+      <div class="product-sort__max">
+        <input class="product-sort__max-input sort-input" name="max" type="number">
+        <label class="product-sort__max-label sort-label" for="max">-gacha</label>
+      </div>
+    </div>
+
+    <div class="product-search">
+      <input class="product-search__input" type="search" placeholder="Qidiruv">
+    </div>
+  </header>
+
+  <main>
+    <ul class="products-list"></ul>
+  </main>
+
+
+
+  <script src="./js/watches.js"></script>
+  <script src="./js/main.js"></script>
+</body>
+</html>
