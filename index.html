@@ -26,27 +26,22 @@
 
     <div class="product-sort">
       <div class="product-sort__category">
-        <select class="product-sort__select" name="watches">
-          <option value="">Kategoriya</option>
-          <option value="filipp">Patek Filipp</option>
-          <option value="rolex">Rolex</option>
-          <option value="breguet">Breguet</option>
-          <option value="omega">Omega</option>
-          <option value="chopard">Chopard</option>
+        <select onchange="searchCategory(this)" class="product-sort__select" name="watches">
+          <option value="all">all</option>
         </select>
       </div>
       <div class="product-sort__min">
-        <input class="product-sort__min-input sort-input" name="min" type="number">
+        <input oninput="maxCost(this)" class="product-sort__min-input sort-input" name="min" type="number">
         <label class="product-sort__min-label sort-label" for="min">-dan</label>
       </div>
       <div class="product-sort__max">
-        <input class="product-sort__max-input sort-input" name="max" type="number">
+        <input oninput="minCost(this)" class="product-sort__max-input sort-input" name="max" type="number">
         <label class="product-sort__max-label sort-label" for="max">-gacha</label>
       </div>
     </div>
 
     <div class="product-search">
-      <input class="product-search__input" type="search" placeholder="Qidiruv">
+      <input class="product-search__input" type="search" placeholder="Qidiruv" oninput="search()">
     </div>
   </header>
 

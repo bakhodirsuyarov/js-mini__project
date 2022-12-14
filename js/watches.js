@@ -50,7 +50,7 @@ let watches = [
     {
       "id": "7",
       "name": "Gear Fit",
-      "cost": "99",
+      "cost": "105",
       "count": "56",
       "category": "Smart",
       "img_src": "https://snejnogorsk.sidex.ru/images_offers/383/383906/imgremeshok_dlya_samsung_gear_fit_etsr350bsegru_temnoserii_1.jpg"
