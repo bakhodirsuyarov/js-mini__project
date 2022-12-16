@@ -1,10 +1,16 @@
 let List = document.querySelector(".products-list");
 let searchInput = document.querySelector(".product-search__input");
 let Select = document.querySelector(".product-sort__select");
+let dan = document.querySelector("#mincost");
+let gacha = document.querySelector("#maxcost");
+let badge = document.querySelector("#badge");
+let Modal = document.querySelector(".modal");
+let Card = document.querySelector(".card");
+let savatcha = []
 
 function makeItem(params){
   List.innerHTML = ''
-  params.forEach((element) =>{
+  params.forEach((element, index) =>{
     let item = document.createElement("li");
     let img = document.createElement("img");
     img.src = element.img_src
@@ -12,24 +18,29 @@ function makeItem(params){
     title.textContent = element.name
     let price = document.createElement("p");
     price.textContent = element.cost + " $"
-    let link = document.createElement("a");
-    link.text = "Sotib olish"
+    let btn = document.createElement("button");
+    btn.textContent = "Sotib olish"
+    btn.setAttribute("onclick", `buyFunc(${index})`)
+
 
     item.classList.add("products-item");
     img.classList.add("products-img");
     title.classList.add("products-title");
     price.classList.add("products-cost");
-    link.classList.add("products-link")
+    btn.classList.add("products-link", "btn")
 
     item.appendChild(img);
     item.appendChild(title);
     item.appendChild(price);
-    item.appendChild(link);
+    item.appendChild(btn);
 
 
     List.appendChild(item)
   })
 }
+
+// console.log(savat);
+
 
 makeItem(watches)
 
@@ -82,58 +93,122 @@ function searchCategory(item) {
 }
 
 
-
-// 1-usul
-
-
-function maxCost(num){
-  let resultmax = []
-  watches.forEach((arr) =>{
-    if(arr.cost >= num.value){
-      resultmax.push(arr)
-    }
+function maxCost(){
+  let result = watches.filter((item, index) =>{
+      return item.cost > dan.value && item.cost < gacha.value
   })
-  console.log(resultmax);
-  makeItem(resultmax)
-}
-
-
-function minCost(num){
-  let resultmin = []
-  watches.forEach((item)=>{
-    if(item.cost <= num.value){
-      resultmin.push(item)
-    }
-  })
-  console.log(resultmin);
-  makeItem(resultmin)
+  makeItem(result);
 }
 
 
 
+// Buying
+
+function buyFunc(i){
+  if(savatcha.length === 0){
+    savatcha.push({...watches[i], count: 1})
+    watches[i].count = watches[i].count - 1;
+  }else{
+    let result = savatcha.filter(item =>{
+      return item.name === watches[i].name
+    })
+    if(result.length === 0){
+      savatcha.push({...watches[i], count: 1})
+      watches[i].count = watches[i].count - 1;
+    }
+    console.log(result);
+
+  }
+
+  console.log(savatcha);
+  badge.innerText = savatcha.length
+}
+
+
+// BASCET
+
+function view(){
+  Card.innerHTML = ""
+  Modal.classList.add("active")
+  savatcha.forEach((element, index) =>{
+    let item = document.createElement("li");
+    let img = document.createElement("img");
+    img.src = element.img_src
+    let leftwrapper = document.createElement("div");
+    let rightwrapper = document.createElement("div");
+    let title = document.createElement("h3");
+    title.textContent = element.name
+    let price = document.createElement("p");
+    price.textContent = element.cost + " $"
+    let decr = document.createElement("button");
+    decr.textContent = "-"
+    decr.setAttribute("onclick", `decrFunc(${index})`)
+    let countText = document.createElement("h5");
+    countText.textContent = element.count
+    let incr = document.createElement("button");
+    incr.textContent = "+"
+    incr.setAttribute("onclick", `incrFunc(${index})`)
+    let leftTop = document.createElement("div")
+    let leftBottom = document.createElement("div")
+    let summa = document.createElement("h2");
+    summa.innerText = "Umumiy summa : " + element.count * element.cost
+    let uchirish = document.createElement("button");
+    uchirish.textContent = "uchirish"
+    uchirish.setAttribute("onclick", `uchirish(${index})`);
+
+
+    item.classList.add("modal-item");
+    img.classList.add("modal-img");
+    title.classList.add("products-title");
+    price.classList.add("products-cost");
+    decr.classList.add("products-link", "btn")
+    incr.classList.add("products-link", "btn")
+    leftwrapper.classList.add("leftbox_top");
+    leftTop.classList.add("leftTop");
+    countText.classList.add("modal-countText");
+    decr.classList.add("modal-decr");
+    incr.classList.add("modal-incr");
+
+
+    item.appendChild(img);
+    item.appendChild(leftwrapper);
+    item.appendChild(rightwrapper);
+    item.appendChild(uchirish)
+    leftTop.appendChild(decr);
+    leftTop.appendChild(countText);
+    leftTop.appendChild(incr);
+    leftwrapper.appendChild(leftTop);
+    leftBottom.appendChild(summa)
+    leftwrapper.appendChild(leftBottom);
+    rightwrapper.appendChild(title);
+    rightwrapper.appendChild(price);
 
 
 
-// 2-usul
+    Card.appendChild(item)
+  })
+};
 
-// function maxCost(num){
-//   let resultComp = []
-//   watches.forEach((item) =>{
-//     if(item.cost >= num.value){
-//       resultComp.push(item)
-//     }
-//   })
+function off(){
+  Modal.classList.remove("active")
+}
 
-//   console.log(resultComp);
-// }
 
-// function minCost(num){
-//   let resultComp = []
-//   watches.forEach((item) =>{
-//     if(item.cost <= num.value){
-//       resultComp.push(item)
-//     }
-//   })
+function incrFunc(i){
+  savatcha[i].count += 1
+  view()
+}
 
-//   console.log(resultComp);
-// }
+function decrFunc(i){
+  if(savatcha[i].count === 1){
+    savatcha.splice(i, 1)
+  }else{
+    savatcha[i].count -= 1
+  }
+  view()
+}
+
+function uchirish(i){
+  savatcha[i].splice(i, 1);
+  view()
+}

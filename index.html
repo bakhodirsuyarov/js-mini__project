@@ -12,15 +12,26 @@
 </head>
 <body>
 
+  <div class="modal">
+    <button class="off-btn" onclick="off()">off</button>
+    <div class="card-wrapper">
+      <h2>Umumiy summa:</h2>
+      <div class="card">
+    </div>
+    </div>
+  </div>
+
   <header class="header">
     <div class="product-top">
       <div class="product-logo">
-        <img class="product-logo__img" src="./img/Home 1 (1).svg" alt="Home-icon" width="30" height="30">
-        <h2 class="product-logo__title">MAHSULOTLAR</h2>
+        <a href="index.html" class="product-logo__link">
+          <img class="product-logo__img" src="./img/Home 1 (1).svg" alt="Home-icon" width="30" height="30">
+          <h2 class="product-logo__title">MAHSULOTLAR</h2>
+        </a>
       </div>
-      <button class="product-card__btn">
+      <button id="bascet" class="product-card__btn" onclick="view()">
         <img class="product-card__img" src="./img/Buy 1 (1).svg" alt="card-icon" width="30" height="30">
-        <h2 class="product-card__title">SAVATCHA</h2>
+        <h2 class="product-card__title">SAVATCHA <span id="badge">0</span></h2>
       </button>
     </div>
 
@@ -31,11 +42,11 @@
         </select>
       </div>
       <div class="product-sort__min">
-        <input oninput="maxCost(this)" class="product-sort__min-input sort-input" name="min" type="number">
+        <input id="mincost" class="product-sort__min-input sort-input" name="min" type="number">
         <label class="product-sort__min-label sort-label" for="min">-dan</label>
       </div>
       <div class="product-sort__max">
-        <input oninput="minCost(this)" class="product-sort__max-input sort-input" name="max" type="number">
+        <input id="maxcost" oninput="maxCost()" class="product-sort__max-input sort-input" name="max" type="number">
         <label class="product-sort__max-label sort-label" for="max">-gacha</label>
       </div>
     </div>
@@ -48,6 +59,8 @@
   <main>
     <ul class="products-list"></ul>
   </main>
+
+
 
 
 
