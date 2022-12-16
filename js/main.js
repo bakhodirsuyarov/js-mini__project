@@ -209,6 +209,6 @@ function decrFunc(i){
 }
 
 function uchirish(i){
-  savatcha[i].splice(i, 1);
+  savatcha.splice(i, 1);
   view()
 }
