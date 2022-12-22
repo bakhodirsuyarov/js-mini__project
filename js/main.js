@@ -6,6 +6,8 @@ let gacha = document.querySelector("#maxcost");
 let badge = document.querySelector("#badge");
 let Modal = document.querySelector(".modal");
 let Card = document.querySelector(".card");
+let AllCost = document.querySelector("#all__cost");
+let UmumiySumma = document.querySelector("#summaa");
 let savatcha = []
 
 function makeItem(params){
@@ -128,9 +130,11 @@ function buyFunc(i){
 // BASCET
 
 function view(){
+  let allsumma = 0
   Card.innerHTML = ""
   Modal.classList.add("active")
   savatcha.forEach((element, index) =>{
+    allsumma = allsumma + (element.count * element.cost)
     let item = document.createElement("li");
     let img = document.createElement("img");
     img.src = element.img_src
@@ -153,8 +157,12 @@ function view(){
     let summa = document.createElement("h2");
     summa.innerText = "Umumiy summa : " + element.count * element.cost
     let uchirish = document.createElement("button");
-    uchirish.textContent = "uchirish"
     uchirish.setAttribute("onclick", `uchirish(${index})`);
+    let deleteBtn = document.createElement("img");
+    deleteBtn.src = "./img/delete-icon.png"
+    deleteBtn.width = 25;
+    deleteBtn.height = 25;
+
 
 
     item.classList.add("modal-item");
@@ -168,12 +176,14 @@ function view(){
     countText.classList.add("modal-countText");
     decr.classList.add("modal-decr");
     incr.classList.add("modal-incr");
+    uchirish.classList.add("delete-item")
 
 
     item.appendChild(img);
     item.appendChild(leftwrapper);
     item.appendChild(rightwrapper);
     item.appendChild(uchirish)
+    uchirish.appendChild(deleteBtn)
     leftTop.appendChild(decr);
     leftTop.appendChild(countText);
     leftTop.appendChild(incr);
@@ -187,6 +197,7 @@ function view(){
 
     Card.appendChild(item)
   })
+  UmumiySumma.innerText = allsumma
 };
 
 function off(){
@@ -210,5 +221,7 @@ function decrFunc(i){
 
 function uchirish(i){
   savatcha.splice(i, 1);
+  badge.innerText = savatcha.length
+
   view()
 }

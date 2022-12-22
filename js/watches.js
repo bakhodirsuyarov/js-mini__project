@@ -21,7 +21,7 @@ let watches = [
       "cost": "189",
       "count": "25",
       "category": "classic",
-      "img_src": "https://shopstraps.ru/wa-data/public/shop/products/15/03/10315/images/5020/5020.750x0.jpg"
+      "img_src": "https://tehnoteca.ru/img/1550/1549749/garmin_marq_athlete_6.jpg"
     },
     {
       "id": "4",

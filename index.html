@@ -13,13 +13,13 @@
 <body>
 
   <div class="modal">
-    <button class="off-btn" onclick="off()">off</button>
+    <button class="off-btn" onclick="off()"><img src="./img/close-icon.webp" alt=""></button>
     <div class="card-wrapper">
-      <h2>Umumiy summa:</h2>
-      <div class="card">
-    </div>
+      <h2 class="all-cost" id="all__cost">Umumiy summa: <span id="summaa"></span></h2>
+      <div class="card"></div>
     </div>
   </div>
+
 
   <header class="header">
     <div class="product-top">
@@ -31,7 +31,7 @@
       </div>
       <button id="bascet" class="product-card__btn" onclick="view()">
         <img class="product-card__img" src="./img/Buy 1 (1).svg" alt="card-icon" width="30" height="30">
-        <h2 class="product-card__title">SAVATCHA <span id="badge">0</span></h2>
+        <h2 class="product-card__title">SAVATCHA <span class="badge-top" id="badge">0</span></h2>
       </button>
     </div>
 
@@ -59,7 +59,6 @@
   <main>
     <ul class="products-list"></ul>
   </main>
-
 
 
 

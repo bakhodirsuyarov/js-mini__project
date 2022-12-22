@@ -46,6 +46,7 @@ ul{
   background-color: #fff;
 }
 
+
 .product-logo__img{
   background-color: transparent;
   margin-right: 15px;
@@ -62,7 +63,22 @@ ul{
 
 .product-card__title{
   color: #345BE5;
+  position: relative;
 }
+
+.badge-top{
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  background-color: red;
+  border-radius: 50%;
+  top: -13px;
+  left: -21px;
+  color: #fff;
+  font-size: 16px;
+  padding-top: 4px;
+}
+
 
 .product-sort{
   display: flex;
@@ -118,8 +134,8 @@ ul{
 
 
 .products-item{
-  width: 240px;
-  height: 350px;
+  width: 300px;
+  height: 450px;
   padding: 35px;
   border: 3px solid #345BE5;
   border-radius: 15px;
@@ -130,8 +146,8 @@ ul{
 }
 
 .products-img{
-  width: 145px;
-  height: 155px;
+  width: 165px;
+  height: 175px;
   border-radius: 20px;
   margin-bottom: 15px;
 }
@@ -161,6 +177,10 @@ ul{
   border-radius: 15px;
 }
 
+.products-link:hover{
+  background: skyblue;
+}
+
 .modal{
   width: 100%;
   height: 100vh;
@@ -173,6 +193,12 @@ ul{
   overflow-y: scroll;
   width: 100%;
   background-color: rgba(0, 0, 0, 0.6);
+  z-index: 1;
+}
+
+.all-cost{
+  padding-top: 20px;
+  color: #345BE5;
 }
 
 .card-wrapper{
@@ -200,8 +226,14 @@ ul{
 
 .off-btn{
   position: absolute;
-  top: 197px;
-  left: 74.1%;
+  top: 190px;
+  left: 73.7%;
+}
+
+.off-btn img{
+  width: 20px;
+  height: 20px;
+  background: transparent;
 }
 
 .modal-item{
@@ -255,6 +287,6 @@ ul{
   background: blue;
 }
 
-.remove-item{
-  display: none;
+.delete-item{
+  margin-top: -190px;
 }
